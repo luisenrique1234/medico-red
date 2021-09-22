@@ -216,20 +216,29 @@ $codi= mb_detect_encoding($str,"ISO-8859-1,UTF-8");
                 </div>
                 <?php
 					include 'php/conexion.php';
-                    $public="select publicacion.id_public,publicacion.titulo_public,publicacion.text_public,publicacion.fecha_public
-                    ,publicacion.categoria_public,publicacion.me_gusta_pu,imagen.id_public_im,imagen.link_imagen,medico.id_medico,medico.nombre_medico
-                     from publicacion,imagen,medico 
-                    WHERE publicacion.id_public=imagen.id_public_im AND publicacion.id_medico_pu=medico.id_medico";
+                    $public="select publicacion.titulo_public,publicacion.text_public,publicacion.fecha_public
+                    ,publicacion.categoria_public,publicacion.me_gusta_pu,imagen.id_public_im,imagen.link_imagen,
+                    medico.id_medico,medico.nombre_medico,video.link_video
+                     from publicacion,imagen,medico,video
+                    WHERE publicacion.id_medico_pu=medico.id_medico AND publicacion.id_public =imagen.id_public_im";
 					$public2 = $mysqli->query ($public);
                     while($res= mysqli_fetch_array($public2)){
                         $link_imagen=$res['link_imagen'];
+                        $video=$res['link_video'];
 						?>
                 <div class="col-md-9 col-sm-7">
                     <div class="row">
                             <div class="col-md-12 col-sm-12">
                             <div class="single-blog two-column">
                                 <div class="post-thumb">
-                                    <a href="blogdetails.html"><?php echo('<img src="'.$link_imagen.'" class="img-responsive" alt="">');?></a>
+                                    <?php
+                                    if ($link_imagen !='') {
+                                    
+                                    echo ('<a href="blogdetails.html"><img src="'.$link_imagen.'" class="img-responsive" alt="">');}?></a>
+                                    <?php
+                                    if ($video !='') {
+                                        echo('<video width="410" height="315" autoplay controls src="'.$video.'" frameborder="0"></video>');
+                                    }?>
                                     <div class="post-overlay">
                                         <span class="uppercase"><a href="#"><h4><?php mostrar($res['fecha_public']); ?></h4></a></span>
                                     </div>
