@@ -218,15 +218,16 @@ $codi= mb_detect_encoding($str,"ISO-8859-1,UTF-8");
                 <div class="col-md-9 col-sm-7">
                 <?php
 					include 'php/conexion.php';
-                    $public="SELECT publicacion.titulo_public,publicacion.text_public,publicacion.fecha_public
-                    ,publicacion.categoria_public,publicacion.me_gusta_pu,imagen.id_public_im,imagen.link_imagen,
-                    medico.id_medico,medico.nombre_medico,video.link_video
-                     FROM publicacion,imagen,medico,video
-                    WHERE  publicacion.id_medico_pu=medico.id_medico    AND  publicacion.id_video_pu=video.id_video AND publicacion.id_public=imagen.id_public_im ";
+                    $public="SELECT publicacion.titulo_public,publicacion.text_public,publicacion.link_imagen,publicacion.link_video,
+                    publicacion.link_audio,publicacion.link_archivo,publicacion.fecha_public,publicacion.categoria_public,publicacion.me_gusta_pu,
+                    medico.nombre_medico FROM publicacion,medico WHERE publicacion.id_medico_pu=medico.id_medico";
 					$public2 = $mysqli->query ($public);
                     while($res= mysqli_fetch_array($public2)){
                         $link_imagen=$res['link_imagen'];
                         $video=$res['link_video'];
+                        $audio=$res['link_audio'];
+                        $fecha=$res['fecha_public'];
+                        $archivo=$res['link_archivo'];
                         ?>
 
                     <div class="row">
@@ -241,10 +242,24 @@ $codi= mb_detect_encoding($str,"ISO-8859-1,UTF-8");
                                     if ($video !='') {
                                         echo('<video width="820" height="420"  controls src="'.$video.'" frameborder="0"></video>');
                                     }?>
+                                    
+                                    
                                     <div class="post-overlay">
                                         <span class="uppercase"><a href="#"><h4><?php mostrar($res['fecha_public']); ?></h4></a></span>
                                     </div>
+                                    
                                 </div>
+                                <?php
+                                    if ($audio !='') {
+                                        echo ('<audio src="'.$audio.'" preload="none" controls></audio>');
+                                        echo ("<h4> $fecha </h4>");
+                                        }?>
+                                        <?php
+                                    if ($archivo!='') {
+                                        echo ("<h4> $fecha </h4>");
+                                        echo ('<a href="'.$archivo.'"download="red-medica">Descargar Archivo</a>');
+                                        
+                                        }?>
                                 <div class="post-content overflow">
                                     <h2><?php mostrar($res ['titulo_public']);?></h2>
                                     <h3 class="post-author"><a href="#">Publicado por: <?php mostrar($res ['nombre_medico']);?> </a></h3>
