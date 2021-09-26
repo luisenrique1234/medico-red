@@ -161,12 +161,15 @@
   z-index: 1;
 }
 
+/*paosicin y color del boton de buscar*/
+
 .search i{
   color: #00aeef;
   cursor: pointer;
   position: absolute;
-  right: 50px;
-  top: 2px;
+  font-size: 21px;
+  right: 45px;
+  top: 18px;
 }
 
 
@@ -227,13 +230,13 @@
 }
 
 
-
+/*pasicion y color del menu de inicio*/
 .navbar-nav.navbar-right >li a {
   color: #000;
   font-size: 12px;
-  padding: 30px;
+  padding: 50px;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 
