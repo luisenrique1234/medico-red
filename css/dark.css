@@ -97,3 +97,18 @@
 .dark h4{
     color: white;
 }
+.dark label{
+    color: white;
+}
+.dark textarea{
+    color: white;
+    background-color: rgb(4, 24, 24);
+}
+.dark input{
+    color: white;
+    background-color: rgb(4, 24, 24);
+}
+.dark select{
+    color: white;
+    background-color: rgb(4, 24, 24);
+}
