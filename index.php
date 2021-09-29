@@ -311,8 +311,8 @@ $codi= mb_detect_encoding($str,"ISO-8859-1,UTF-8");
                 <div class="col-sm-12 text-center bottom-separator">
                 <div class="col-sm-12">
                     <div class=" copyright-text text-center ">
-                        <p> Your Company 2021. All Rights Reserved.</p>
-                        <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
+                        <p> Red medica 2021. Todos los derechos reservados.</p>
+                        <p>Diseñado por<a target="_blank" href="http://luis-enrique.com">Sr.LEGG</a></p>
                     </div>
                 </div>
             </div>

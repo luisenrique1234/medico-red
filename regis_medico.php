@@ -133,7 +133,7 @@ $codi= mb_detect_encoding($str,"ISO-8859-1,UTF-8");
                 <div class="row">
                     <div>
                         <div class="col-sm-12">
-                            <h1 class="title">Publicar</h1>
+                            <h1 class="title">Registro</h1>
                             <p></p>
                         </div>
                     </div>
@@ -209,43 +209,29 @@ $codi= mb_detect_encoding($str,"ISO-8859-1,UTF-8");
 		   <form action="php/alumno_registro.php?accion=INS" method="POST">
   	     	 	<div class="row">
                     <div class="wow fadeInDown">
-  	     	 		<div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-lg-5 col-lg-offset-3 col-xs-12 col-xs-offset-0">
+  	     	 		<div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-lg-4 col-lg-offset-1 col-xs-12 col-xs-offset-0">
   	     	 		 	<div class="form-group" class="alert alert-danger" role="alert">
-  	     	 		 		<label class="control-label">Titulo<span style="color: turquoise">*</span></label>
-  	     	 		 		<input type="text" name="nombre" required="required" placeholder="Titulo" class="form-control">
+  	     	 		 		<label class="control-label">Nombre<span style="color: turquoise">*</span></label>
+  	     	 		 		<input type="text" name="nombre" required="required" placeholder="Nombre" class="form-control">
   	     	 		 	</div>
 						 </div>
                          
                             
                          
-                         <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-lg-8 col-lg-offset-3 col-xs-12 col-xs-offset-0">
-                         <label class="control-label">Contenido<span style="color: turquoise">*</span></label>
+                         <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-lg-4 col-lg-offset-0 col-xs-12 col-xs-offset-0">
+                         <label class="control-label">Apellido<span style="color: turquoise">*</span></label>
 						 <div class="form-group">
-                                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Escribe una publicacion"></textarea>
+                         <input type="text" name="nombre" required="required" placeholder="Apellido" class="form-control">
                             </div> 
                          </div>
-  	     	 		 <div class="col-md-3 col-md-offset-2 col-sm-3 col-sm-offset-2 col-lg-3 col-lg-offset-3 col-xs-12 col-xs-offset-0">
-                         <div class="form-group">
-                        <label for="" class="control-label">Categoria<span style="color:turquoise">*</span> </label>
-                        <select class="form-control" name="cate">
-                            <option>Pediatria </option>
-                            <option>Radiologia</option>
-                            <option>Cardiologia</option>
-                        </select>
-                        </div>
-  	     	 		 </div>
                          
-                         <div class="col-lg-2 col-lg-offset-0 col-xs-12 col-xs-offset-0">
-                         <br>
-                         <a href="index.php" class="btn btn-info">Selecionar archivo</a>
-                         </div>
 					
   	     	 	<!-- parte que ocupada la pantalla completa -->
   	     	 	
-  	     	 		<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-3 col-xs-12 col-xs-offset-0">
+  	     	 		<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-1 col-xs-12 col-xs-offset-0">
   	     	 			<div class="form-group">
                                 <br>
-                                <input type="submit" value="Publicar" class="btn btn-submit">
+                                <input type="submit" value="Registrar" class="btn btn-submit">
                                 <br>
                                 <br>	
                                 <a href="index.php" class="btn btn-danger">Cancelar</a>

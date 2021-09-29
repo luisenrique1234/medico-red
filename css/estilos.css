@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: rgb(48, 156, 145);
+}
+
+#login .container #login-center #login-column #login-box {
+  margin-top: 70px;
+  max-width: 600px;
+  height: 340px;
+  box-shadow: 4px 4px 4px 4px #343a40;
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;    
+}
