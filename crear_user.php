@@ -31,27 +31,37 @@
 <body>
     <div id="login">
         
+    <div class="wow bounceIn">
         <div class="container">                        
             <div id="login-center" class="center justify-content-center align-items-center">
-                <div id="login-column" class="col-md-8">
-                
-           <div class="col-4 m-auto"  user-img> 
-            <img src="images/logo.png"   width="40%">
+                <div id="login-column" class="col-lg-5 col-lg-offset-3">
+
+                <br>              
+           <div class=" col-lg-offset-3"> 
+            <img src="images/logo.png"   width="50%">
            </div>
            
                     <div id="login-box" class="col-md-12  bg-light text-dark">
                         <form action="php/usuario_registro.php?accion=INS" method="POST">
-                            <h3 class="text-center text-dark">Registra Usuario</h3>
+                            <h3 class="text-center text-dark">Registro Medico</h3>
                             <div class="form-group">
-                                <label for="usuario" class="text-dark">Usuario</label><br>
-                                <input type="text" name="usuario" id="usuario" class="form-control">
+                                <label for="usuario" class="text-dark">Nombre</label><br>
+                                <input type="text" name="nombre" id="usuario" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario" class="text-dark">Apellido</label><br>
+                                <input type="text" name="apellido" id="usuario" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario" class="text-dark">Codio Medico</label><br>
+                                <input type="text" name="codime" id="usuario" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-dark">Password</label><br>
                                 <input type="password" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group text-center">                                
-                                <input type="submit" name="submit" class="btn btn-dark btn-lg btn-block" value="Guardar">
+                            <input type="submit" value="registralr" class="btn btn-submit">
                                 <br>
                                 <h5><a href="index.php">Login</a></h5>
                               
@@ -62,6 +72,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     
     <script type="text/javascript" src="js/jquery.js"></script>
