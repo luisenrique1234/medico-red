@@ -98,7 +98,7 @@ function mostrar($str)
                                     <li><a href="portfolioone.html">COVID-19</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="#">iniciar  sesion<i class="fa fa-angle-down"></i></a>
+                            <li class="dropdown"><a href="#">iniciar sesion<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="#">inicio de sesion</a></li>
                                     <li><a href="crear_user.php">Registro</a></li>
@@ -242,16 +242,17 @@ function mostrar($str)
                                             echo ('<audio src="' . $audio . '" preload="none" controls></audio>');
                                             echo ("<h4> $fecha </h4>");
                                         } ?>
-                                        <?php
-                                        if ($archivo != '') {
-                                            echo ('<h4 class="post-author"><a href="' . $archivo . '"download="red-medica">Descargar Archivo</a></h4>');
-                                            echo ("<h4>Publicado el: $fecha </h4>");
-                                        } ?>
+
                                         <div class="post-content overflow">
                                             <h2><?php mostrar($res['titulo_public']); ?></h2>
-                                            <h3 class="post-author"><a href="#">Publicado por: <?php mostrar($res['nombre_medico']); ?> </a></h3>
+                                            <h3 class="post-author"><a href="#">Autor: <?php mostrar($res['nombre_medico']); ?> </a></h3>
                                             <h3>Resumen</h3>
                                             <p><?php mostrar($res['text_public']); ?></p>
+                                            <?php
+                                            if ($archivo != '') {
+                                                echo ('<h4 class="post-author"><a href="' . $archivo . '"download="red-medica">Descargar Archivo</a></h4>');
+                                                echo ("<h4>Publicado el: $fecha </h4>");
+                                            } ?>
                                             <a href="#" class="read-more">ver publica completa</a>
                                             <div class="post-bottom overflow">
                                                 <ul class="nav navbar-nav post-nav">
@@ -277,17 +278,17 @@ function mostrar($str)
                     }
                     ?>
                     <div class="con">
-        <input type="checkbox" id="btn-mas">
-        <div class="redes">
-            <a href="#" class="fa fa-user-circle"></a>
-            <a href="#" class="fa fa-wheelchair"></a>
-            <a href="#" class="fa fa-heartbeat"></a>
-            <a href="form_public.php" class="fa fa-stethoscope"></a>
-        </div>
-        <div class="btn-mas">
-            <label for="btn-mas" class="fa fa-plus"></label>
-        </div>
-    </div>
+                        <input type="checkbox" id="btn-mas">
+                        <div class="redes">
+                            <a href="#" class="fa fa-user-circle"></a>
+                            <a href="#" class="fa fa-wheelchair"></a>
+                            <a href="#" class="fa fa-heartbeat"></a>
+                            <a href="form_public.php" class="fa fa-stethoscope"></a>
+                        </div>
+                        <div class="btn-mas">
+                            <label for="btn-mas" class="fa fa-plus"></label>
+                        </div>
+                    </div>
                     <div class="blog-pagination">
                         <ul class="pagination">
                             <li><a href="#">left</a></li>
