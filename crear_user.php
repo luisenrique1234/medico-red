@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Publicar</title>
+    <title>Registro medico</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/lightbox.css" rel="stylesheet"> 
@@ -42,19 +42,19 @@
            </div>
            
                     <div id="login-box" class="col-md-12  bg-light text-dark">
-                        <form action="php/usuario_registro.php?accion=INS" method="POST">
+                        <form action="php/registro_medico.php?accion=INS" method="POST">
                             <h3 class="text-center text-dark">Registro Medico</h3>
                             <div class="form-group">
                                 <label for="usuario" class="text-dark">Nombre</label><br>
-                                <input type="text" name="nombre" id="usuario" class="form-control">
+                                <input type="text" name="nombre" id="nombre" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="usuario" class="text-dark">Apellido</label><br>
-                                <input type="text" name="apellido" id="usuario" class="form-control">
+                                <input type="text" name="apellido" id="apellido" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="usuario" class="text-dark">Codio Medico</label><br>
-                                <input type="text" name="codime" id="usuario" class="form-control">
+                                <label for="usuario" class="text-dark">SQARTO Medico</label><br>
+                                <input type="text" name="codime" id="codigo" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-dark">Password</label><br>

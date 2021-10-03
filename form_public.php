@@ -70,39 +70,33 @@ $codi= mb_detect_encoding($str,"ISO-8859-1,UTF-8");
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a  href="index.php">Inicio</a></li>
-                        <li class="dropdown"><a href="#">Paginas <i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                                <li><a href="aboutus.html">About</a></li>
-                                <li><a href="aboutus2.html">About 2</a></li>
-                                <li><a href="service.html">Services</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="contact.html">Contact us</a></li>
-                                <li><a href="contact2.html">Contact us 2</a></li>
-                                <li><a href="404.html">404 error</a></li>
-                                <li><a href="coming-soon.html">Coming Soon</a></li>
-                            </ul>
-                        </li>                    
-                        <li class="dropdown"><a href="blog.html">Blog <i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                                <li><a href="blog.html">Blog Default</a></li>
-                                <li><a href="blogtwo.html">Timeline Blog</a></li>
-                                <li><a href="blogone.html">2 Columns + Right Sidebar</a></li>
-                                <li><a href="blogthree.html">1 Column + Left Sidebar</a></li>
-                                <li><a href="blogfour.html">Blog Masonary</a></li>
-                                <li><a href="blogdetails.html">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a href="portfolio.html">Portfolio <i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                                <li><a href="portfolio.html">Portfolio Default</a></li>
-                                <li><a href="portfoliofour.html">Isotope 3 Columns + Right Sidebar</a></li>
-                                <li><a href="portfolioone.html">3 Columns + Right Sidebar</a></li>
-                                <li><a href="portfoliotwo.html">3 Columns + Left Sidebar</a></li>
-                                <li><a href="portfoliothree.html">2 Columns</a></li>
-                                <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                            </ul>
-                        </li>                         
-                        <li><a href="shortcodes.html ">Inicio de sesion </a></li>                    
+                        <li class="dropdown"><a href="#">Pediatria<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="aboutus.html">Enbarosos</a></li>
+                                    <li><a href="aboutus2.html">Maltrato infantil</a></li>
+                                    <li><a href="service.html">Salud infantil</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="blog.html">Cardiologia<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="blog.html">Ataques al corazon</a></li>
+                                    <li><a href="blogtwo.html">Arritmia cardiaca</a></li>
+                                    <li><a href="blogone.html">Taquicardia</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="portfolio.html">Noticias<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="portfolio.html">Nacionales</a></li>
+                                    <li><a href="portfoliofour.html">internacionales</a></li>
+                                    <li><a href="portfolioone.html">COVID-19</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="#">iniciar  sesion<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="#">inicio de sesion</a></li>
+                                    <li><a href="crear_user.php">Registro</a></li>
+                                </ul>
+                            </li>                   
                     </ul>
                 </div>
                 </div>
@@ -145,7 +139,7 @@ $codi= mb_detect_encoding($str,"ISO-8859-1,UTF-8");
     <!--/#action-->
     
 
-    <section id="blog" class="padding-top">
+    <section id="noticia" class="padding-top">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-5">
@@ -154,43 +148,45 @@ $codi= mb_detect_encoding($str,"ISO-8859-1,UTF-8");
                             <h3>Noticias</h3>
                             <div class="media">
                                 <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/project1.jpg" alt=""></a>
+                                    <a href="#"><img src="images/portfolio/noticia3.jpeg" alt=""></a>
                                 </div>
                                 <div class="media-body">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                    <p>posted on  07 March 2014</p>
+                                    <h4><a href="#">Destacan impacto del embarazo en adolescentes en la salud pública</a></h4>
+                                    <p>Santo Domingo.- El impacto del embarazo adolescente a nivel psicosocial, económico, familiar,
+                                        comunitario y su repercusión en la salud pública en un escenario marcado por la COVID-19.</p>
                                 </div>
                             </div>
                             <div class="media">
                                 <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/project2.jpg" alt=""></a>
+                                    <a href="#"><img src="images/portfolio/noticia2.jpeg" alt=""></a>
                                 </div>
                                 <div class="media-body">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                    <p>posted on  07 March 2014</p>
+                                    <h4><a href="#">Ministro de Salud garantiza que desde DIGEMAPS se establecen los
+                                            controles para el fortalecimiento de la vigilancia de sustancias controladas</a></h4>
+                                    <p>Santo Domingo, R.D.-El ministro de Salud, afirmó que desde la Dirección General de
+                                        Medicamentos, Alimentos y Productos Sanitarios (DIGEMAPS).</p>
                                 </div>
                             </div>
                             <div class="media">
                                 <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/project3.jpg" alt=""></a>
+                                    <a href="#"><img src="images/portfolio/noticia.jpeg" alt=""></a>
                                 </div>
                                 <div class="media-body">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                    <p>posted on  07 March 2014</p>
+                                    <h4><a href="#">Ministerio de Salud garantiza
+                                            hemodiálisis a pacientes
+                                            renales en los próximos seis meses</a></h4>
+                                    <p>La Romana, R.D.-Este jueves el ministro de Salud, doctor Daniel
+                                        Rivera participó en el inicio del XII Congreso Dominicano y XX Curso
+                                        Dominico Español de Nefrología.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="sidebar-item categories">
                             <h3>Especialidades</h3>
                             <ul class="nav navbar-stacked">
-                                <li><a href="#">Traumatología,<span class="pull-right">(1)</span></a></li>
-                                <li class="active"><a href="#">Farmacología<span class="pull-right">(8)</span></a></li>
-                                <li><a href="#">Neumología<span class="pull-right">(4)</span></a></li>
-                                <li><a href="#">Infectología<span class="pull-right">(9)</span></a></li>
-                                <li><a href="#">Alergología<span class="pull-right">(3)</span></a></li>
-                                <li><a href="#">Medicina preventiva<span class="pull-right">(4)</span></a></li>
-                                <li><a href="#">Cirugía <span class="pull-right">(2)</span></a></li>
-                                <li><a href="#">Radiología <span class="pull-right">(8)</span></a></li>
+                                <li><a href="#">Pediatria</a></li>
+                                <li class="active"><a href="#">Cardiologia</a></li>
+                                <li><a href="#">Cirugia general</a></li>
                             </ul>
                         </div>
                     </div>
@@ -206,13 +202,13 @@ $codi= mb_detect_encoding($str,"ISO-8859-1,UTF-8");
          <div class="panel-heading">  
   	   
   	     
-		   <form action="php/alumno_registro.php?accion=INS" method="POST">
+		   <form action="php/public.php?accion=INS" method="POST">
   	     	 	<div class="row">
                     <div class="wow fadeInDown">
   	     	 		<div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-lg-5 col-lg-offset-3 col-xs-12 col-xs-offset-0">
   	     	 		 	<div class="form-group" class="alert alert-danger" role="alert">
   	     	 		 		<label class="control-label">Titulo<span style="color: turquoise">*</span></label>
-  	     	 		 		<input type="text" name="nombre" required="required" placeholder="Titulo" class="form-control">
+  	     	 		 		<input type="text" name="titulo" required="required" placeholder="Titulo" class="form-control">
   	     	 		 	</div>
 						 </div>
                          
@@ -221,13 +217,13 @@ $codi= mb_detect_encoding($str,"ISO-8859-1,UTF-8");
                          <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-lg-8 col-lg-offset-3 col-xs-12 col-xs-offset-0">
                          <label class="control-label">Contenido<span style="color: turquoise">*</span></label>
 						 <div class="form-group">
-                                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Escribe una publicacion"></textarea>
+                                <textarea name="public" id="message" required="required" class="form-control" rows="8" placeholder="Escribe una publicacion"></textarea>
                             </div> 
                          </div>
   	     	 		 <div class="col-md-3 col-md-offset-2 col-sm-3 col-sm-offset-2 col-lg-3 col-lg-offset-3 col-xs-12 col-xs-offset-0">
                          <div class="form-group">
                         <label for="" class="control-label">Categoria<span style="color:turquoise">*</span> </label>
-                        <select class="form-control" name="cate">
+                        <select class="form-control" name="categoria">
                             <option>Pediatria </option>
                             <option>Radiologia</option>
                             <option>Cardiologia</option>
@@ -246,13 +242,14 @@ $codi= mb_detect_encoding($str,"ISO-8859-1,UTF-8");
   	     	 			<div class="form-group">
                                 <br>
                                 <input type="submit" value="Publicar" class="btn btn-submit">
+                                </form>
                                 <br>
                                 <br>	
                                 <a href="index.php" class="btn btn-danger">Cancelar</a>
   	     	 			</div>
   	     	 		</div>
   	     	 	
-  	     	 </form>
+  	     	
   	     </div>
          </div> 
          </div>

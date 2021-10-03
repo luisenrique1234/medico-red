@@ -169,7 +169,7 @@
   position: absolute;
   font-size: 21px;
   right: 45px;
-  top: 18px;
+  top: 5px;
 }
 
 
@@ -192,9 +192,9 @@
   margin-top: 20px;
   border-radius: 4px;
 }
-
+/*espacio de los iconos*/
 .social-icons ul li{
-  padding: 0 20px;
+  padding: 0 10px;
 
 }
 
@@ -234,7 +234,7 @@
 .navbar-nav.navbar-right >li a {
   color: #000;
   font-size: 12px;
-  padding: 50px;
+  padding: 30px;
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -337,6 +337,16 @@ ul.sub-menu {
   }
 }
 
+
+/*color de y posision de la caja "box" que esta en la seccion de noticias*/
+#noticia{
+  margin-top: 1px;
+  max-width: 285px;
+  max-height: 1280px;
+  box-shadow: 2px 2px 2px 2px #0d87ac;
+  background-color: rgb(255, 255, 255);
+  border-radius: 7px;    
+}
 
 /*************************
 *******Footer******
@@ -718,7 +728,7 @@ en la parte final de la pagina****/
   /*background-image: url(../images/home/tour-bg.png);*/
   /*background-color: #fbfafa;*/
   background-repeat: repeat-x;
-  height: 130px;
+  height: 5px;
   background-position: center;
   display: table;
   position: static;
