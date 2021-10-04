@@ -174,8 +174,8 @@ function mostrar($str)
                         $audio = $res['link_audio'];
                         $fecha = $res['fecha_public'];
                         $archivo = $res['link_archivo'];
-                        $nombre=$res['nombre_medico'];
-                        $apellido=$res['apellido_medico'];
+                        $nombre = $res['nombre_medico'];
+                        $apellido = $res['apellido_medico'];
 
                     ?>
                         <!--animacion js wow fadeInDowm de las publicaciones-->
@@ -210,10 +210,10 @@ function mostrar($str)
 
                                         <div class="post-content overflow">
                                             <h2><?php mostrar($res['titulo_public']); ?></h2>
-                                            <?php echo'<h3 class="post-author"><a href="#">Autor:'.$nombre." ".$apellido.'</a></h3>'?> 
+                                            <?php echo '<h3 class="post-author"><a href="#">Autor:' . $nombre . " " . $apellido . '</a></h3>' ?>
                                             <h3>Resumen</h3>
                                             <p><?php mostrar($res['text_public']); ?></p>
-                                            <?php echo ("<h5>Publicado el: $fecha </h5>");?>
+                                            <?php echo ("<h5>Publicado el: $fecha </h5>"); ?>
                                             <a href="memoriac.php" class="read-more">ver publica completa</a>
                                             <br>
                                             <br>
@@ -244,6 +244,7 @@ function mostrar($str)
                     <?php
                     }
                     ?>
+                    <!--boton flotante donde esta los diferentes acciones -->
                     <div class="con">
                         <input type="checkbox" id="btn-mas">
                         <div class="redes">
@@ -256,6 +257,7 @@ function mostrar($str)
                             <label for="btn-mas" class="fa fa-plus"></label>
                         </div>
                     </div>
+                    <!--*******************************************************-->
                     <div class="blog-pagination">
                         <ul class="pagination">
                             <li><a href="#">left</a></li>
@@ -297,6 +299,7 @@ function mostrar($str)
     <script type="text/javascript" src="js/lightbox.min.js"></script>
     <script type="text/javascript" src="js/wow.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <!--LUgar donde esta el ativador del modo oscuro -->
     <script type="text/javascript" src="js/temad.js"></script>
 </body>
 
