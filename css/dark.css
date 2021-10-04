@@ -83,8 +83,8 @@
 .dark #noticia{
     margin-top: 1px;
     max-width: 285px;
-    max-height: 1280px;
-    box-shadow: 2px 2px 2px 2px #0d87ac;
+    max-height: 300px;
+    box-shadow: 1px 1px 1px 1px #0d87ac;
     background-color: rgb(0, 0, 0);
     border-radius: 7px;    
   }
@@ -106,6 +106,9 @@
     color: white;
 }
 .dark h4{
+    color: white;
+}
+.dark h5{
     color: white;
 }
 .dark label{

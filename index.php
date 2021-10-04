@@ -19,7 +19,7 @@ function mostrar($str)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Red social medica</title>
+    <title>Sistama de divulgacion medico</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/lightbox.css" rel="stylesheet">
@@ -151,43 +151,6 @@ function mostrar($str)
             <div class="row">
                 <div class="col-md-3 col-sm-5">
                     <div class="sidebar blog-sidebar">
-                        <div class="sidebar-item  recent">
-                            <h3>Noticias</h3>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/noticia3.jpeg" alt=""></a>
-                                </div>
-                                <div class="media-body">
-                                    <h4><a href="#">Destacan impacto del embarazo en adolescentes en la salud pública</a></h4>
-                                    <p>Santo Domingo.- El impacto del embarazo adolescente a nivel psicosocial, económico, familiar,
-                                        comunitario y su repercusión en la salud pública en un escenario marcado por la COVID-19.</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/noticia2.jpeg" alt=""></a>
-                                </div>
-                                <div class="media-body">
-                                    <h4><a href="#">Ministro de Salud garantiza que desde DIGEMAPS se establecen los
-                                            controles para el fortalecimiento de la vigilancia de sustancias controladas</a></h4>
-                                    <p>Santo Domingo, R.D.-El ministro de Salud, afirmó que desde la Dirección General de
-                                        Medicamentos, Alimentos y Productos Sanitarios (DIGEMAPS).</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/noticia.jpeg" alt=""></a>
-                                </div>
-                                <div class="media-body">
-                                    <h4><a href="#">Ministerio de Salud garantiza
-                                            hemodiálisis a pacientes
-                                            renales en los próximos seis meses</a></h4>
-                                    <p>La Romana, R.D.-Este jueves el ministro de Salud, doctor Daniel
-                                        Rivera participó en el inicio del XII Congreso Dominicano y XX Curso
-                                        Dominico Español de Nefrología.</p>
-                                </div>
-                            </div>
-                        </div>
                         <div class="sidebar-item categories">
                             <h3>Especialidades</h3>
                             <ul class="nav navbar-stacked">
@@ -203,7 +166,7 @@ function mostrar($str)
                     include 'php/conexion.php';
                     $public = "SELECT publicacion.titulo_public,publicacion.text_public,publicacion.link_imagen,publicacion.link_video,
                     publicacion.link_audio,publicacion.link_archivo,publicacion.fecha_public,publicacion.categoria_public,publicacion.me_gusta_pu,
-                    medico.nombre_medico FROM publicacion,medico WHERE publicacion.id_medico_pu=medico.id_medico ORDER BY publicacion.me_gusta_pu DESC";
+                    medico.nombre_medico,medico.apellido_medico FROM publicacion,medico WHERE publicacion.id_medico_pu=medico.id_medico ORDER BY publicacion.me_gusta_pu DESC";
                     $public2 = $mysqli->query($public);
                     while ($res = mysqli_fetch_array($public2)) {
                         $link_imagen = $res['link_imagen'];
@@ -211,6 +174,8 @@ function mostrar($str)
                         $audio = $res['link_audio'];
                         $fecha = $res['fecha_public'];
                         $archivo = $res['link_archivo'];
+                        $nombre=$res['nombre_medico'];
+                        $apellido=$res['apellido_medico'];
 
                     ?>
                         <!--animacion js wow fadeInDowm de las publicaciones-->
@@ -245,22 +210,24 @@ function mostrar($str)
 
                                         <div class="post-content overflow">
                                             <h2><?php mostrar($res['titulo_public']); ?></h2>
-                                            <h3 class="post-author"><a href="#">Autor: <?php mostrar($res['nombre_medico']); ?> </a></h3>
+                                            <?php echo'<h3 class="post-author"><a href="#">Autor:'.$nombre." ".$apellido.'</a></h3>'?> 
                                             <h3>Resumen</h3>
                                             <p><?php mostrar($res['text_public']); ?></p>
+                                            <?php echo ("<h5>Publicado el: $fecha </h5>");?>
+                                            <a href="memoriac.php" class="read-more">ver publica completa</a>
+                                            <br>
+                                            <br>
                                             <?php
                                             if ($archivo != '') {
                                                 echo ('<h4 class="post-author"><a href="' . $archivo . '"download="red-medica">Descargar Archivo</a></h4>');
-                                                echo ("<h4>Publicado el: $fecha </h4>");
                                             } ?>
-                                            <a href="#" class="read-more">ver publica completa</a>
                                             <div class="post-bottom overflow">
                                                 <ul class="nav navbar-nav post-nav">
                                                     <li>
                                                         <h4><a href="#"><i class="fa fa-tag"></i><?php mostrar($res['categoria_public']); ?></a></h4>
                                                     </li>
                                                     <li>
-                                                        <h4><a href="#"><i class="fa fa-heart"></i><?php mostrar($res['me_gusta_pu']); ?> me gusta</a></h4>
+                                                        <h4><a href="#"><i class="fa fa-download"></i>Descargas <?php mostrar($res['me_gusta_pu']); ?></a></h4>
                                                     </li>
                                                     <li>
                                                         <h4><a href="#"><i class="fa fa-comments"></i>3 comentarios</a></h4>
