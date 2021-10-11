@@ -25,12 +25,13 @@
         //$date = (new DateTime())->format('y-m-d');
 
     
-    $sql = " INSERT INTO `medico` ( `nombre_medico`,`apellido_medico`, `codigo_medico`,`contrasena_me`, `estado`) 
+    $sql = " INSERT INTO `medico` ( `nombre_medico`,`apellido_medico`, `codigo_medico`,`idRol`,`contrasena_me`, `estado`) 
     VALUES (
 
         '$nombre',
         '$apellido',
         '$codime2',
+        '3',
         '$pass',
         'A')";
     
@@ -46,7 +47,7 @@
     // echo("erro descripcion:" .mysqli_error($mysqli));
     //header("Location: ../propietarip_mant.php?s=".$status);
 
-    header("Refresh: 2; URL= ../index.php?s=".$status);
+    header("Refresh: 2; URL= ../login.php?s=".$status);
     echo '
 <script type="text/javascript">
 

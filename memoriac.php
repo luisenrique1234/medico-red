@@ -7,8 +7,18 @@ utf-8 para que asi todos tengan el mismo formato*/
 function mostrar($str)
 {
     $codi = mb_detect_encoding($str, "ISO-8859-1,UTF-8");
-    $str = iconv($codi, 'UTF-8', $str);
+    $str = iconv($codi, 'ISO-8859-1', $str);
     echo $str;
+}
+$id=$_GET['id'];
+
+session_start();
+if ($_SESSION["s_medico"] === null){
+	header("Location: ./login.php");
+}else{
+    if($_SESSION["s_idRol2"]==3){
+        header("Location: ./vistas/pag_error.php");
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -92,18 +102,24 @@ function mostrar($str)
                                     <li><a href="blogone.html">Taquicardia</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="portfolio.html">Noticias<i class="fa fa-angle-down"></i></a>
+                            <li class="dropdown"><a href="#">Cirugia general<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="portfolio.html">Nacionales</a></li>
-                                    <li><a href="portfoliofour.html">internacionales</a></li>
-                                    <li><a href="portfolioone.html">COVID-19</a></li>
+                                    <li><a href="#">Anestecia</a></li>
+                                    <li><a href="#">Anestecia Local</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="#">iniciar sesion<i class="fa fa-angle-down"></i></a>
+                            <li>
+
+                                <!-- <div >
+                            <img src="images/predeterminado.jpg" width="100%" height="60">
+                            </div>-->
+                                <a href="portfolio.html" class="btn btn-info"><?php  echo $_SESSION["s_medico"];?>. .<i
+                                        class="fa fa-user"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="#">inicio de sesion</a></li>
                                     <li><a href="crear_user.php">Registro</a></li>
+                                    <li><a href="bd/logout.php" onclick="return alertaactivar();">Cerrar sesion</a></li>
                                 </ul>
+
                             </li>
                         </ul>
                     </div>
@@ -140,62 +156,98 @@ function mostrar($str)
                         <div class="col-md-12 col-sm-12">
                             <div class="single-blog blog-details two-column">
                                 <div class="post-thumb">
-                                    <a href="#"><img src="images/blog/7.jpg" class="img-responsive" alt=""></a>
-                                    <div class="post-overlay">
-                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
-                                    </div>
-                                </div>
-                                <div class="post-content overflow">
-                                    <h2 class="post-title bold"><a href="#">Advanced business cards design</a></h2>
-                                    <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen
-                                        book. It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s
-                                        with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                                        recently with desktop publishing software like Aldus PageMaker including
-                                        versions of Lorem Ipsum. <br> <br>
-
-                                        There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour, or randomised words
-                                        which don't look even slightly believable. If you are going to use a passage of
-                                        Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the
-                                        middle of text. All the Lorem Ipsum generators on the Internet tend to repeat
-                                        predefined chunks as necessary, making this the first true generator on the
-                                        Internet. It uses a dictionary of over 200 Latin words, combined with a handful
-                                        of model sentence structures, to generate Lorem Ipsum which looks reasonable.
-                                        The generated Lorem Ipsum is therefore always free from repetition, injected
-                                        humour, or non-characteristic words etc It is a long established fact that a
-                                        reader will be distracted by the readable content of a page when looking at its
-                                        layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                                        distribution of letters, as opposed to using 'Content here, content here',
-                                        making it look like readable English. </p>
-                                    <div class="post-bottom overflow">
-                                        <ul class="nav navbar-nav post-nav">
-                                            <li><a href="#"><i class="fa fa-tag"></i>Creative</a></li>
-                                            <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
-                                            <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div class="author-profile padding">
+                                    <?php
+                    include 'php/conexion.php';
+                    $public = "SELECT publicacion.titulo_public,publicacion.text_public,publicacion.link_imagen,publicacion.link_video,
+                    publicacion.link_audio,publicacion.link_archivo,publicacion.fecha_public,publicacion.categoria_public,publicacion.me_gusta_pu,
+                    medico.nombre_medico,medico.apellido_medico FROM publicacion,medico WHERE publicacion.id_public=$id AND publicacion.id_medico_pu=medico.id_medico";
+                    $public2 = $mysqli->query($public);
+                    for ($i = 1; $i <= 1; $i++) {
+                        $res = mysqli_fetch_array($public2);
+                        $link_imagen = $res['link_imagen'];
+                        $video = $res['link_video'];
+                        $audio = $res['link_audio'];
+                        $fecha = $res['fecha_public'];
+                        $archivo = $res['link_archivo'];
+                        $nombre = $res['nombre_medico'];
+                        $apellido = $res['apellido_medico'];
+                    ?>
+                                    <!--animacion js wow fadeInDowm de las publicaciones-->
+                                    <div class="wow fadeInDown">
                                         <div class="row">
-                                            <div class="col-sm-2">
-                                                <img src="images/blogdetails/1.png" alt="">
-                                            </div>
-                                            <div class="col-sm-10">
-                                                <h3>Rodrix Hasel</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et dolore magna aliq Ut enim ad
-                                                    minim veniam, quis nostrud exercitation ullamco laboris nisi</p>
-                                                <span>Website:<a href="www.jooomshaper.com">
-                                                        www.jooomshaper.com</a></span>
+                                            <div class="col-md-12 col-sm-12">
+                                                <div class="single-blog two-column">
+                                                    <div class="post-thumb">
+                                                        <?php
+                                            if ($link_imagen != '') {
+                                                echo ('<a href="blogdetails.html"><img src="' . $link_imagen . '" class="img-responsive" alt="">');
+                                            } ?></a>
+                                                        <div class="post-overlay">
+                                                            <span class="uppercase"><a href="#">
+                                                                    <h4><?php mostrar($res['fecha_public']); ?></h4>
+                                                                </a></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-content overflow">
+                                                        <h2><?php mostrar($res['titulo_public']); ?></h2>
+                                                        <?php echo '<h3 class="post-author"><a href="#">Autor:' . $nombre . " " . $apellido . '</a></h3>' ?>
+                                                        <h3>Resumen</h3>
+                                                        <p><?php mostrar($res['text_public']); ?></p>
+                                                        <?php echo ("<h5>Publicado el: $fecha </h5>"); ?>
+                                                        <a href="memoriac.php" class="read-more">ver publica
+                                                            completa</a>
+                                                        <br>
+                                                        <br>
+                                                        <?php
+                                                            if ($archivo != '') {
+                                                                echo ('<h4 class="post-author"><a href="php/' . $archivo . '"download="sistema-difucion-medica">Descargar Archivo</a></h4>');
+                                                            }elseif ($video !=''){
+                                                            echo ('<h4 class="post-author"><a href="php/' . $video . '"download="sistema-difucion-medica">Descargar Archivo</a></h4>');
+                                                            }elseif ($audio !=''){
+                                                            echo ('<h4 class="post-author"><a href="php/' . $audio . '"download="sistema-difucion-medica">Descargar Archivo</a></h4>');
+                                                            }?>
+                                                        <div class="post-bottom overflow">
+                                                            <ul class="nav navbar-nav post-nav">
+                                                                <li>
+                                                                    <h4><a href="#"><i
+                                                                                class="fa fa-tag"></i><?php mostrar($res['categoria_public']); ?></a>
+                                                                    </h4>
+                                                                </li>
+                                                                <li>
+                                                                    <h4><a href="#"><i
+                                                                                class="fa fa-download"></i>Descargas
+                                                                            <?php mostrar($res['me_gusta_pu']); ?></a>
+                                                                    </h4>
+                                                                </li>
+                                                                <li>
+                                                                    <h4><a href="#"><i class="fa fa-comments"></i>3
+                                                                            comentarios</a></h4>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php
+                    }
+                    ?>
+                                    <h2 class="bold">Comentarios</h2>
+                                    <?php 
+                                    include 'php/conexion.php';
+                                    $comen ="SELECT comentario.text_comen,medico.nombre_medico,medico.apellido_medico FROM medico,publicacion,comentario WHERE comentario.id_public_com=publicacion.id_public 
+                                    AND comentario.id_medico_com=medico.id_medico  AND comentario.id_public_com=$id";
+
+                                    $comen2 = $mysqli->query($comen);
+                                    while ($resco = mysqli_fetch_array($comen2)) {
+                                        $nombre2 = $resco['nombre_medico'];
+                                        $apellido2 = $resco['apellido_medico'];
+
+                                    
+                                    ?>
                                     <div class="response-area">
-                                        <h2 class="bold">Comments</h2>
+
                                         <ul class="media-list">
                                             <li class="media">
                                                 <div class="post-comment">
@@ -203,53 +255,8 @@ function mostrar($str)
                                                         <img class="media-object" src="images/blogdetails/2.png" alt="">
                                                     </a>
                                                     <div class="media-body">
-                                                        <span><i class="fa fa-user"></i>Posted by <a
-                                                                href="#">Endure</a></span>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                                            do eiusmod tempor incididunt ut labore et dolore magna aliq
-                                                            Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                                            laboris nisi.</p>
-                                                        <ul class="nav navbar-nav post-nav">
-                                                            <li><a href="#"><i class="fa fa-clock-o"></i>February
-                                                                    11,2014</a></li>
-                                                            <li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="parrent">
-                                                    <ul class="media-list">
-                                                        <li class="post-comment reply">
-                                                            <a class="pull-left" href="#">
-                                                                <img class="media-object" src="images/blogdetails/3.png"
-                                                                    alt="">
-                                                            </a>
-                                                            <div class="media-body">
-                                                                <span><i class="fa fa-user"></i>Posted by <a
-                                                                        href="#">Endure</a></span>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                                    elit, sed do eiusmod tempor incididunt ut </p>
-                                                                <ul class="nav navbar-nav post-nav">
-                                                                    <li><a href="#"><i
-                                                                                class="fa fa-clock-o"></i>February
-                                                                            11,2014</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                            <li class="media">
-                                                <div class="post-comment">
-                                                    <a class="pull-left" href="#">
-                                                        <img class="media-object" src="images/blogdetails/4.png" alt="">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <span><i class="fa fa-user"></i>Posted by <a
-                                                                href="#">Endure</a></span>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                                            do eiusmod tempor incididunt ut labore et dolore magna aliq
-                                                            Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                                            laboris nisi.</p>
+                                                        <?php echo '<h5 class="post-author"><a href="#">Comentario de: ' . $nombre2 . " " . $apellido2 . '</a></h5>' ?>
+                                                        <p><?php mostrar($resco['text_comen']);?></p>
                                                         <ul class="nav navbar-nav post-nav">
                                                             <li><a href="#"><i class="fa fa-clock-o"></i>February
                                                                     11,2014</a></li>
@@ -261,6 +268,9 @@ function mostrar($str)
 
                                         </ul>
                                     </div>
+                                    <?php
+                                        }
+                                        ?>
                                     <!--/Response-area-->
                                 </div>
                             </div>
@@ -270,10 +280,9 @@ function mostrar($str)
                 <div class="col-md-3 col-sm-5">
                     <div class="sidebar blog-sidebar">
                         <div class="sidebar-item  recent">
-
                         </div>
                         <div class="sidebar-item categories">
-                        <h3>Especialidades</h3>
+                            <h3>Especialidades</h3>
                             <ul class="nav navbar-stacked">
                                 <li><a href="#">Pediatria</a></li>
                                 <li class="active"><a href="#">Cardiologia</a></li>
@@ -286,7 +295,6 @@ function mostrar($str)
         </div>
     </section>
     <!--/#blog-->
-
     <footer>
         <div class="container">
             <div class="row">
@@ -302,7 +310,17 @@ function mostrar($str)
     </footer>
     <!--/#footer-->
 
-
+    <!--codigo del mesange cierre de sesion-->
+    <script>
+    function alertaactivar() {
+        var respuesta = confirm("Estas seguro de Cerrar Sesion");
+        if (respuesta == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    </script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/lightbox.min.js"></script>

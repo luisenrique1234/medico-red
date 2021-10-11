@@ -7,9 +7,19 @@ utf-8 para que asi todos tengan el mismo formato*/
 function mostrar($str)
 {
     $codi = mb_detect_encoding($str, "ISO-8859-1,UTF-8");
-    $str = iconv($codi, 'UTF-8', $str);
+    $str = iconv($codi, 'ISO-8859-1', $str);
     echo $str;
 }
+
+session_start();
+if ($_SESSION["s_medico"] === null){
+	header("Location: ./login.php");
+}else{
+    if($_SESSION["s_idRol2"]==3){
+        header("Location: ./vistas/pag_error.php");
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +72,8 @@ function mostrar($str)
             <div class="navbar navbar-inverse" role="banner">
                 <div class="container">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -91,18 +102,23 @@ function mostrar($str)
                                     <li><a href="blogone.html">Taquicardia</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="portfolio.html">Noticias<i class="fa fa-angle-down"></i></a>
+                            <li class="dropdown"><a href="#">Cirugia general<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="portfolio.html">Nacionales</a></li>
-                                    <li><a href="portfoliofour.html">internacionales</a></li>
-                                    <li><a href="portfolioone.html">COVID-19</a></li>
+                                    <li><a href="#">Anestecia</a></li>
+                                    <li><a href="#">Anestecia Local</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="#">iniciar sesion<i class="fa fa-angle-down"></i></a>
+                            <li >
+                        
+                           <!-- <div >
+                            <img src="images/predeterminado.jpg" width="100%" height="60">
+                            </div>-->
+                                <a href="portfolio.html" class="btn btn-info"><?php  echo $_SESSION["s_medico"];?>.  .<i class="fa fa-user"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="#">inicio de sesion</a></li>
                                     <li><a href="crear_user.php">Registro</a></li>
+                                    <li><a href="bd/logout.php" onclick="return alertaactivar();">Cerrar sesion</a></li>
                                 </ul>
+                                 
                             </li>
                         </ul>
                     </div>
@@ -111,7 +127,7 @@ function mostrar($str)
                     <form role="form">
                         <i class="fa fa-search"></i>
                         <div class="field-toggle">
-                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                            <input type="text" class="search-form" autocomplete="off" placeholder="Buscar">
                         </div>
                     </form>
                     <div class="social-icons search">
@@ -127,22 +143,40 @@ function mostrar($str)
     </header>
 
     <!--/#header-->
-    <!--id la imagen de triangulor que se usa para el inicio-->
+    <!--id la imagen de triangulor que se usa para el inicio
     <section id="page-breadcrumb">
         <div class="vertical-center sun">
             <div class="container">
                 <div class="row">
                     <div>
                         <div class="col-sm-12">
-                            <h1 class="title">Inicio</h1>
-                            <p></p>
+                            <h3 class="title">Inicio</h3>
+                            
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
-    </section>
-    </section>
+        
+    </section>-->
+
+    <!--<div class="blog-pagination">
+    <div class="pagination">
+   
+
+<div class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+  <div class="form-outline">
+  <button id="search-button" type="button" class="btn btn-info">
+    <i class="fas fa-search"></i>
+  </button>
+    <input id="search-input" type="search" id="form1" class="form-control" placeholder="buscar" />
+  </div>
+  
+</div>
+    </div>
+    </div>-->
+
     <!--/#action-->
 
 
@@ -162,9 +196,10 @@ function mostrar($str)
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-7">
+
                     <?php
                     include 'php/conexion.php';
-                    $public = "SELECT publicacion.titulo_public,publicacion.text_public,publicacion.link_imagen,publicacion.link_video,
+                    $public = "SELECT publicacion.id_public,publicacion.titulo_public,publicacion.text_public,publicacion.link_imagen,publicacion.link_video,
                     publicacion.link_audio,publicacion.link_archivo,publicacion.fecha_public,publicacion.categoria_public,publicacion.me_gusta_pu,
                     medico.nombre_medico,medico.apellido_medico FROM publicacion,medico WHERE publicacion.id_medico_pu=medico.id_medico ORDER BY publicacion.me_gusta_pu DESC";
                     $public2 = $mysqli->query($public);
@@ -178,69 +213,77 @@ function mostrar($str)
                         $apellido = $res['apellido_medico'];
 
                     ?>
-                        <!--animacion js wow fadeInDowm de las publicaciones-->
-                        <div class="wow fadeInDown">
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12">
-                                    <div class="single-blog two-column">
-                                        <div class="post-thumb">
-                                            <?php
-                                            if ($link_imagen != '') {
-
-                                                echo ('<a href="blogdetails.html"><img src="' . $link_imagen . '" class="img-responsive" alt="">');
-                                            } ?></a>
-                                            <?php
-                                            if ($video != '') {
-                                                echo ('<video width="820" height="420"  controls src="' . $video . '" frameborder="0"></video>');
-                                            } ?>
-
-
-                                            <div class="post-overlay">
-                                                <span class="uppercase"><a href="#">
-                                                        <h4><?php mostrar($res['fecha_public']); ?></h4>
-                                                    </a></span>
-                                            </div>
-
-                                        </div>
+                    <!--animacion js wow fadeInDowm de las publicaciones-->
+                    <div class="wow fadeInDown">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="single-blog two-column">
+                                    <div class="post-thumb">
                                         <?php
+                                            if ($link_imagen != '') {
+                                                $elcha='\\';
+
+                                                echo ('<a href="blogdetails.html"><img src="php'.$elcha.'imagenes'.$elcha.''. $link_imagen . '" class="img-responsive" alt="">');
+                                                //echo ("<h4>$link_imagen </h4>");
+                                            } ?></a>
+                                        <?php
+                                            /*if ($video != '') {
+                                                echo ('<video width="820" height="420"  controls src="' . $video . '" frameborder="0"></video>');
+                                            } */?>
+
+
+                                        <div class="post-overlay">
+                                            <span class="uppercase"><a href="#">
+                                                    <h4><?php mostrar($res['fecha_public']); ?></h4>
+                                                </a></span>
+                                        </div>
+
+                                    </div>
+                                    <?php
+                                        /*
                                         if ($audio != '') {
                                             echo ('<audio src="' . $audio . '" preload="none" controls></audio>');
                                             echo ("<h4> $fecha </h4>");
-                                        } ?>
+                                        } */?>
 
-                                        <div class="post-content overflow">
-                                            <h2><?php mostrar($res['titulo_public']); ?></h2>
-                                            <?php echo '<h3 class="post-author"><a href="#">Autor:' . $nombre . " " . $apellido . '</a></h3>' ?>
-                                            <h3>Resumen</h3>
-                                            <p><?php mostrar($res['text_public']); ?></p>
-                                            <?php echo ("<h5>Publicado el: $fecha </h5>"); ?>
-                                            <a href="memoriac.php" class="read-more">ver publica completa</a>
-                                            <br>
-                                            <br>
-                                            <?php
+                                    <div class="post-content overflow">
+                                        <h2><?php mostrar($res['titulo_public']); ?></h2>
+                                        <?php echo '<h3 class="post-author"><a href="#">Autor:' . $nombre . " " . $apellido . '</a></h3>' ?>
+                                        <h3>Resumen</h3>
+                                        <p><?php mostrar($res['text_public']); ?></p>
+                                        <?php echo ("<h5>Publicado el: $fecha </h5>"); ?>
+                                        <?php echo("<a href='memoriac.php?id=".$res["id_public"]."' class='read-more'>ver publica completa</a>");?>
+                                        <br>
+                                        <br>
+                                        <?php
                                             if ($archivo != '') {
-                                                echo ('<h4 class="post-author"><a href="' . $archivo . '"download="red-medica">Descargar Archivo</a></h4>');
+                                                echo ('<h4 class="post-author"><a href="php/' . $archivo . '"download="sistema-difucion-medica">Descargar Archivo</a></h4>');
+                                            }elseif ($video !=''){
+                                                echo ('<h4 class="post-author"><a href="php/' . $video . '"download="sistema-difucion-medica">Descargar Archivo</a></h4>');
+                                            }elseif ($audio !=''){
+                                                echo ('<h4 class="post-author"><a href="php/' . $audio . '"download="sistema-difucion-medica">Descargar Archivo</a></h4>');
                                             } ?>
-                                            <div class="post-bottom overflow">
-                                                <ul class="nav navbar-nav post-nav">
-                                                    <li>
-                                                        <h4><a href="#"><i class="fa fa-tag"></i><?php mostrar($res['categoria_public']); ?></a></h4>
-                                                    </li>
-                                                    <li>
-                                                        <h4><a href="#"><i class="fa fa-download"></i>Descargas <?php mostrar($res['me_gusta_pu']); ?></a></h4>
-                                                    </li>
-                                                    <li>
-                                                        <h4><a href="#"><i class="fa fa-comments"></i>3 comentarios</a></h4>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                        <div class="post-bottom overflow">
+                                            <ul class="nav navbar-nav post-nav">
+                                                <li>
+                                                    <h4><a href="#"><i
+                                                                class="fa fa-tag"></i><?php mostrar($res['categoria_public']); ?></a>
+                                                    </h4>
+                                                </li>
+                                                <li>
+                                                    <h4><a href="#"><i class="fa fa-download"></i>Descargas
+                                                            <?php mostrar($res['me_gusta_pu']); ?></a></h4>
+                                                </li>
+                                                <li>
+                                                    <h4><a href="#"><i class="fa fa-comments"></i>3 comentarios</a></h4>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
+                    </div>
                     <?php
                     }
                     ?>
@@ -292,6 +335,23 @@ function mostrar($str)
             </div>
     </footer>
     <!--/#footer-->
+
+    <script>
+    function alertaactivar() {
+
+        var respuesta = confirm("Estas seguro de Cerrar Sesion");
+
+        if (respuesta == true) {
+            return true;
+        } else {
+
+            return false;
+
+        }
+
+
+    }
+    </script>
 
 
     <script type="text/javascript" src="js/jquery.js"></script>
